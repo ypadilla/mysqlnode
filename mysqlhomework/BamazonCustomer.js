@@ -30,29 +30,43 @@ console.log('results', results);
 
 
 
+var inquirer = require('inquirer');
 
-// var productSelect = function() {
-//     inquirer.prompt([{
-//         name: "item",
-//         type: "input",
-//         message: "Which ID would you like to buy??"
-//     }, {
-//         name: "units",
-//         type: "input",
-//         message: "How many units would you like to buy??"
-//     }
-    // }]).then(function(answer) {
-    //     connection.query("SELECT FROM Products", {
-    //         itemname: answer.item,
-    //         category: answer.category,
-    //         startingbid: answer.startingBid,
-    //         highestbid: answer.startingBid
-    //     }, function(err, res) {
-    //         console.log("Your auction was created successfully!");
-    //         start();
-    //     });
-    // })
-// };
+
+    inquirer.prompt([{
+        name: "item",
+        type: "input",
+        message: "Which ID would you like to buy??"
+    }, {
+        name: "units",
+        type: "input",
+        message: "How many units would you like to buy??"
+    }
+
+
+    ]).then(function(answer) {
+        connection.query("SELECT FROM Bamazon.Products", {
+
+
+            itemname: answer.item,
+            category: answer.category,
+            startingbid: answer.startingBid,
+            highestbid: answer.startingBid
+        }, function(err, res) {
+
+        	if(StockQuantity < 1){
+        		console.log("Insufficient Quantity!")
+        	}else{
+
+        		//take away from the quantity in sql.
+
+        	}
+
+          
+            
+        });
+    })
+
 
 
 
